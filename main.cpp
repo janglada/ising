@@ -2,7 +2,7 @@
 					  main.cpp  -  description
 						 -------------------
 copyright            : (C) 2006 by Joan Anglada
-email                : janglada@gmail.com
+email                : xxxxxx
 ***************************************************************************/
 
 /***************************************************************************
@@ -22,10 +22,10 @@ email                : janglada@gmail.com
 #include <fstream>
 #include <GL/glut.h>
 #include <unistd.h>
-#include "MTRand.h"     //UTILITZAREM EL MERSENNE TWISTER RNG PQ TÉ UN PERIODE QUE FLIPES
-// LA RUTINA RAND() DEL C++ TE UN PERIODE DE NOMÉS  2³¹
-//EN CANVI AQUEST TÉ UN PERIODE DE 2^19937-1 (diuen)
-//I A MÉS, ÉS (+?)  RÀPID
+#include "MTRand.h"     //UTILITZAREM EL MERSENNE TWISTER RNG PQ TÃ‰ UN PERIODE QUE FLIPES
+// LA RUTINA RAND() DEL C++ TE UN PERIODE DE NOMÃ‰S  2Â³Â¹
+//EN CANVI AQUEST TÃ‰ UN PERIODE DE 2^19937-1 (diuen)
+//I A MÃ‰S, Ã‰S (+?)  RÃ€PID
 
 using namespace std;
 //FUNCTION PROTOTYPES:
@@ -34,9 +34,9 @@ using namespace std;
 void initialize();              //LEGEIX parametres en para.in i crea lattice
 int randomInt();                //NOMBRES RANDOM -1 o +1
 void step();              // Fa un montecarlo step, canvia energia i m.
-void plotIt();                  //dibuixa a trvés de la consola la xarxa
-void renderScene(void);         //pinta a través de la finestra;
-void calcVariables();           //Calcula energia i magnetització inicial
+void plotIt();                  //dibuixa a trvÃ©s de la consola la xarxa
+void renderScene(void);         //pinta a travÃ©s de la finestra;
+void calcVariables();           //Calcula energia i magnetitzaciÃ³ inicial
 void calc(int a, int b);        //calcula energia d'un lloc
 void correlations();
 
@@ -82,7 +82,7 @@ int main(int argc, char **argv) {
 
 	float question = -1;//=-1;
 	//char conf="S";
-	cout<<"Voleu representació gràfica?(1=S o -1=N)";
+	cout<<"Voleu representaciÃ³ grÃ fica?(1=S o -1=N)";
 	cin>>question;
 
 	if (question > 0) {
@@ -105,7 +105,7 @@ int main(int argc, char **argv) {
 
 		//cout<<"hi\n";
 		calcVariables();
-		// cout<<"magnetització inicial="<<m<<"\n";
+		// cout<<"magnetitzaciÃ³ inicial="<<m<<"\n";
 		nsteps = 0;
 		for (int i = 0; i < steps; i++) {
 			step();
@@ -132,7 +132,7 @@ int main(int argc, char **argv) {
 // for (int l=0;l<12;l++) {correlAv[l]=correlAv[l]/(ncor);}
 
 
-		//cout<<"temperatura, energia per spin i magnetització per spin:\n";
+		//cout<<"temperatura, energia per spin i magnetitzaciÃ³ per spin:\n";
 		cout << T << "     " << energy << "   " << m << "   " << cv << "      " << h << "      " << chi << "\n";
 // writeResults();
 	}
@@ -161,13 +161,13 @@ void initialize() {
 	inFile.close();
 
 //SET PARAMETERS    
-	NC = (int) parameters[0];         //LLEGEIX DIMENSIÓ COSTAT XARXA;
+	NC = (int) parameters[0];         //LLEGEIX DIMENSIÃ“ COSTAT XARXA;
 	if (NC > 1000) {
-		cout << "NO SIGUIS CAPDELLUÇ! ENTRA UNA XARXA DE COSTAT<1000\n";
+		cout << "NO SIGUIS CAPDELLUÃ‡! ENTRA UNA XARXA DE COSTAT<1000\n";
 		exit(1);
 	}
 	N = NC * NC;
-	steps = (int) parameters[1];      // LLEGEIX STEPS TOTALS MC (en modalitat no gràfica)
+	steps = (int) parameters[1];      // LLEGEIX STEPS TOTALS MC (en modalitat no grÃ fica)
 	trans = (int) parameters[2];      //LONGITUD DEL TRANSITORI;
 	h = (double) parameters[3];                //EXTERNAL FIELD
 	T = (double) parameters[4];         //TEMPERAATURE
@@ -200,7 +200,7 @@ void calc(int a, int b) {
 	float sE = 0;
 	float sS = 0;
 	float sW = 0;
-	//TENIM EN COMPTE LES CONDICIONS PERIÒDIQUES DE CONTORN
+	//TENIM EN COMPTE LES CONDICIONS PERIÃ’DIQUES DE CONTORN
 	if (a == 0) {
 		sW = latt[NC - 1][b];
 	} else {
@@ -248,7 +248,7 @@ void step() {
 		a = mtrand1.randInt(NC);
 		b = mtrand1.randInt(NC);
 		//  sign=latt[a][b];
-		//CALCULEM PROB +1 ó -1
+		//CALCULEM PROB +1 Ã³ -1
 		calc(a, b);
 		//    p1=Z1/(Z1+Z2);
 		//  p2=Z2/(Z1+Z2);
@@ -336,7 +336,7 @@ void renderScene(void) {
 
 		}
 	}
-	glutSwapBuffers();          //FA LA ANIMACIÓ MÉS SMOOTH
+	glutSwapBuffers();          //FA LA ANIMACIÃ“ MÃ‰S SMOOTH
 
 }
 
@@ -384,7 +384,7 @@ void writeResults() {
 
 	results << "after " << steps << "done\n";
 	results << "************************************************************************\n";
-	results << "temperatura, energia per spin i magnetització per spin:\n";
+	results << "temperatura, energia per spin i magnetitzaciÃ³ per spin:\n";
 	results << T << "     " << energy << "   " << m << "\n";
 	results << "CORRELACIONS\n";
 
