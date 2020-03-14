@@ -1,2 +1,2 @@
 # ising
-An Ising model simulation
+An Ising model simulation for a university assignment
